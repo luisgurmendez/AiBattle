@@ -1,0 +1,168 @@
+{
+	"metadata": {
+		"version": 4.4,
+		"type": "Object",
+		"generator": "Object3D.toJSON"
+	},
+	"geometries": [
+		{
+			"uuid": "CC25C285-9330-4615-957F-BD53F0640B05",
+			"type": "CylinderBufferGeometry",
+			"radiusTop": 1,
+			"radiusBottom": 1,
+			"height": 2,
+			"radialSegments": 32,
+			"heightSegments": 1,
+			"openEnded": false
+		},
+		{
+			"uuid": "FC1413D4-EEE3-4866-876D-DAC6511245C9",
+			"type": "CylinderBufferGeometry",
+			"radiusTop": 1,
+			"radiusBottom": 1,
+			"height": 2,
+			"radialSegments": 32,
+			"heightSegments": 1,
+			"openEnded": false
+		},
+		{
+			"uuid": "1B58000A-6314-4D60-8380-2E3BBDF269CF",
+			"type": "CylinderBufferGeometry",
+			"radiusTop": 1,
+			"radiusBottom": 1,
+			"height": 2,
+			"radialSegments": 32,
+			"heightSegments": 1,
+			"openEnded": false
+		},
+		{
+			"uuid": "3EEAC10E-A4C7-4B51-8243-14E4A2EE1E94",
+			"type": "CylinderBufferGeometry",
+			"radiusTop": 1,
+			"radiusBottom": 1,
+			"height": 2,
+			"radialSegments": 32,
+			"heightSegments": 1,
+			"openEnded": false
+		},
+		{
+			"uuid": "F2FC77FA-F530-4150-AD06-04E1F79F61E9",
+			"type": "BoxBufferGeometry",
+			"width": 1,
+			"height": 1,
+			"depth": 1
+		}],
+	"materials": [
+		{
+			"uuid": "2D555C4C-BD37-4DC9-AF14-C3A1E97C9C5B",
+			"type": "MeshStandardMaterial",
+			"color": 2119704,
+			"roughness": 0.5,
+			"metalness": 0.5,
+			"emissive": 0,
+			"depthFunc": 3,
+			"depthTest": true,
+			"depthWrite": true,
+			"skinning": false,
+			"morphTargets": false
+		},
+		{
+			"uuid": "9F3F5774-07E8-4BD0-846A-9DEB29DD2235",
+			"type": "MeshStandardMaterial",
+			"color": 2778536,
+			"roughness": 0.5,
+			"metalness": 0.5,
+			"emissive": 1913737,
+			"depthFunc": 3,
+			"depthTest": true,
+			"depthWrite": true,
+			"skinning": false,
+			"morphTargets": false
+		},
+		{
+			"uuid": "82AB0E4A-7CD8-439D-AC7D-AB3851425F33",
+			"type": "MeshStandardMaterial",
+			"color": 8866594,
+			"roughness": 0.5,
+			"metalness": 0.5,
+			"emissive": 7491618,
+			"depthFunc": 3,
+			"depthTest": true,
+			"depthWrite": true,
+			"skinning": false,
+			"morphTargets": false
+		},
+		{
+			"uuid": "C6CCDA69-E93D-40B3-BF13-DBA656AC2EF5",
+			"type": "MeshStandardMaterial",
+			"color": 9260574,
+			"roughness": 0.5,
+			"metalness": 0.5,
+			"emissive": 7752997,
+			"depthFunc": 3,
+			"depthTest": true,
+			"depthWrite": true,
+			"skinning": false,
+			"morphTargets": false
+		},
+		{
+			"uuid": "1AD65AA3-D303-42F7-96CC-12EE9C429101",
+			"type": "MeshStandardMaterial",
+			"color": 4965450,
+			"roughness": 0.5,
+			"metalness": 0.5,
+			"emissive": 4953145,
+			"depthFunc": 3,
+			"depthTest": true,
+			"depthWrite": true,
+			"skinning": false,
+			"morphTargets": false
+		}],
+	"object": {
+		"uuid": "8A6DB68A-F6CB-4C59-A737-7441F46856F0",
+		"type": "Group",
+		"name": "tank",
+		"matrix": [1,0,0,0,0,1,0,0,0,0,1,0,0,0,0,1],
+		"children": [
+			{
+				"uuid": "633A9FF5-B630-4CCB-A829-75DF23DDF892",
+				"type": "Mesh",
+				"name": "blaster",
+				"matrix": [2.2204460823375376e-17,0.10000000149011612,0,0,-0.5,1.1102230246251565e-16,0,0,0,0,0.10000000149011612,0,-1,1.2999999523162842,0,1],
+				"geometry": "CC25C285-9330-4615-957F-BD53F0640B05",
+				"material": "2D555C4C-BD37-4DC9-AF14-C3A1E97C9C5B"
+			},
+			{
+				"uuid": "41CEA981-2284-4CEA-88AB-66CC90FCE391",
+				"type": "Mesh",
+				"name": "tankHead",
+				"matrix": [0.5,0,0,0,0,0.25,0,0,0,0,0.5,0,0,1.2999999523162842,0,1],
+				"geometry": "FC1413D4-EEE3-4866-876D-DAC6511245C9",
+				"material": "9F3F5774-07E8-4BD0-846A-9DEB29DD2235"
+			},
+			{
+				"uuid": "2D60780B-1722-4485-8414-94792ABB3442",
+				"type": "Mesh",
+				"name": "rightWheel",
+				"matrix": [1.2999999523162842,0,0,0,0,2.2204460823375376e-17,0.10000000149011612,0,0,-0.30000001192092896,6.661338412448735e-17,0,0,0.25,-0.5,1],
+				"geometry": "1B58000A-6314-4D60-8380-2E3BBDF269CF",
+				"material": "82AB0E4A-7CD8-439D-AC7D-AB3851425F33"
+			},
+			{
+				"uuid": "2464564D-5409-40BB-8294-EA6AAA6291CA",
+				"type": "Mesh",
+				"name": "leftWheel",
+				"matrix": [1.2999999523162842,0,0,0,0,2.2204460823375376e-17,0.10000000149011612,0,0,-0.30000001192092896,6.661338412448735e-17,0,0,0.25,0.5,1],
+				"geometry": "3EEAC10E-A4C7-4B51-8243-14E4A2EE1E94",
+				"material": "C6CCDA69-E93D-40B3-BF13-DBA656AC2EF5"
+			},
+			{
+				"uuid": "C9D8D959-AEE2-4A6A-B61C-5E8893F56BD8",
+				"type": "Mesh",
+				"name": "tankBody",
+				"matrix": [2,0,0,0,0,1,0,0,0,0,1,0,0,0.6000000238418579,0,1],
+				"geometry": "F2FC77FA-F530-4150-AD06-04E1F79F61E9",
+				"material": "1AD65AA3-D303-42F7-96CC-12EE9C429101"
+			}]
+	}
+}
