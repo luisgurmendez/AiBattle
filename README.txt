@@ -1,4 +1,6 @@
 
+Ai Battle is a open source game. Develop the best Ai for your tank and battle!
+
 
 Tank Properties:
 
