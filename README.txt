@@ -70,6 +70,11 @@ In this step function example, every execution will make a move or a direction c
 The system is build to make asynchronous calls to every action method (sush as move, shoot, changeDirection,..), using semaphores.
 So every action your Ai executes is queued in the "behaviorQueue" and really executes when the last action has finished. It is important to keep in mind that the thinking of your Ai is donde when every action queued is executed, and then the step method executes again.
 
+The collision of bullets and tanks trigger a hitTank event that is handled by a listener and makes the apropiate decisions. This is triggered when a bullet is at a distance of 1.5 or less.
+
+
+HOW TO BUILD YOUR OWN AI:
+
 
 
 
