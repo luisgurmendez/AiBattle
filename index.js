@@ -313,6 +313,7 @@ function loadtank(tankPathModel,stepFunc,creationFunc){
          * @param direction
          */
         tank.changeDirection = function(direction){
+
             this.behaviorQueue.push({'action':'changeDirection','args':{'direction':direction}})
         }
 
@@ -333,22 +334,46 @@ function loadtank(tankPathModel,stepFunc,creationFunc){
             //this.direction = direction;
             var thisS = this;
             var stepCounter=0;
-            if(direction < 0){
+            while(direction < 0){
                 direction = direction + Math.PI*2
             }
             this.direction=direction
             console.log(this.tankName)
-            var rotationRight = (prevDirection - direction) % (Math.PI * 2);
+
+
+            if(direction > prevDirection){
+                if(direction - prevDirection < Math.PI){
+                    rotation = Math.abs(direction - prevDirection);
+                }else{
+                    rotation = Math.abs(direction - prevDirection) - 2*Math.PI;
+                }
+            }else{
+                if(prevDirection - direction < Math.PI){
+                    rotation = (-1)*Math.abs(prevDirection - direction);
+                }else{
+                    rotation = 2*Math.PI - prevDirection + direction;
+                }
+            }
+
+
+            rotation = -1*rotation
+
+            /*var rotationRight = (prevDirection - direction) % (Math.PI * 2);
             var rotationLeft = -(Math.PI*2 - prevDirection + direction) % (Math.PI * 2);
             console.log(rotationRight)
             console.log(rotationLeft)
 
             var rotation =0;
             if(Math.abs(rotationRight) > Math.abs(rotationLeft)){
-                rotation = rotationLeft
+               rotation = rotationLeft
             }else{
-                rotation = rotationRight;
+               rotation = rotationRight;
             }
+            */
+
+            console.log(rotation)
+
+
             var stepTarget = Math.abs(Math.floor(rotation * 20 /(2*Math.PI)));
             if (stepTarget ==0)stepTarget =1;
             var rotate= rotation/stepTarget;
@@ -477,7 +502,7 @@ var tanks=[]
  * @returns [{enemyLife,enemyPosition,distance,enemyDirection,directionToEnemy}, ... ]  A list with all enemiesInfoObjects.
  */
 function getEnemies(me){
-    var returnInfo=[]
+    var returnInfo=[];
     for(t in this.tanks){
         if(this.tanks[t]!= me){
             var enemy = this.tanks[t]
@@ -539,8 +564,12 @@ document.addEventListener('tankHit',function(evt){
 
 
 
-loadtank('models/tankBlue.json',stepLuis,creationLuis);
-loadtank('models/tankRed.json',stepBot,creationBot);
+//loadtank('models/tankBlue.json',stepLuis,creationLuis);
+//loadtank('models/tankRed.json',stepBot,creationBot);
+
+loadtank('models/tankRed.json',stepNada,creationNada);
+loadtank('models/tankRed.json',stepNada,creationNada);
+
 
 
 function reStart(){
@@ -559,6 +588,6 @@ function reStart(){
 
     $('.tankLife').remove()
     loadtank('models/tankBlue.json',stepLuis,creationLuis);
-    loadtank('models/tankRed.json',stepBot,creationBot);
+    //loadtank('models/tankRed.json',stepBot,creationBot);
 
 }
