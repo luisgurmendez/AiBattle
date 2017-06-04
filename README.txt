@@ -52,6 +52,10 @@ in the creation method is the tankName, else your tank name will be a 5 random l
         this.tankName="Chappie"
      }
 
+
+
+
+TODO Fire Event when behaviorQueue is empty -> instead of checking every 100ms.
 The step method is a little bit more complex. It executes every 100ms (when behaviorQueue is empty. [This queue has all the next primitives that the tank is going to execute.]) and is where all your main Ai logic will reside.
 A simple step method will look like this:
 
@@ -67,10 +71,10 @@ A simple step method will look like this:
  ** NOTE:The Math library is avaiable and very practical, for doc see: https://developer.mozilla.org/es/docs/Web/JavaScript/Referencia/Objetos_globales/Math
 
 In this step function example, every execution will make a move or a direction change and then a shoot action.
-The system is build to make asynchronous calls to every action method (sush as move, shoot, changeDirection,..), using semaphores.
-So every action your Ai executes is queued in the "behaviorQueue" and really executes when the last action has finished. It is important to keep in mind that the thinking of your Ai is donde when every action queued is executed, and then the step method executes again.
+The system is build to make synchronous calls to every action method (sush as move, shoot, changeDirection,..), using semaphores.
+So every action your Ai executes is queued in the "behaviorQueue" and really executes when the last action has finished. It is important to keep in mind that the thinking of your Ai is done when every action queued is executed, and then the step method executes again.
 
-The collision of bullets and tanks trigger a hitTank event that is handled by a listener and makes the apropiate decisions. This is triggered when a bullet is at a distance of 1.5 or less.
+The collision of bullets and tanks trigger a hitTank event that is handled by a listener and makes the apropiate decisions. This is triggered when a bullet is at a distance of 1.5 or less, of an enemy tank.
 
 
 HOW TO BUILD YOUR OWN AI:

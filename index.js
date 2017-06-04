@@ -238,7 +238,8 @@ function loadtank(tankPathModel,stepFunc,creationFunc){
             this.stepInterval = setInterval(function(){
                 if(thisS.behaviorQueueSemaphore && thisS.behaviorQueue.length > 0){
                     thisS.executeCall(thisS.behaviorQueue.shift())
-                }else if(thisS.behaviorQueue.length == 0 && tanks.length != 1){
+
+                }else if(thisS.behaviorQueue.length == 0 && tanks.length != 1){    // If there are tanks alive, and behaviorQueue is empty
                     thisS.step()
                 }
 
@@ -246,7 +247,7 @@ function loadtank(tankPathModel,stepFunc,creationFunc){
         }
 
         /**
-         * Asynchronization method for the move action.
+         * Synchronization method for the move action.
          * @param distance
          * @param direction
          */
@@ -312,7 +313,7 @@ function loadtank(tankPathModel,stepFunc,creationFunc){
         }
 
         /**
-         * Asynchronization method for the changeDirection action.
+         * Synchronization method for the changeDirection action.
          * @param direction
          */
         tank.changeDirection = function(direction){
@@ -394,7 +395,7 @@ function loadtank(tankPathModel,stepFunc,creationFunc){
 
 
         /**
-         * Asynchronization method for the shoot action.
+         * Synchronization method for the shoot action.
          */
         tank.shoot = function(){
             this.behaviorQueue.push({'action':'shoot','args':{}})
