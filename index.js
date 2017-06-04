@@ -33,12 +33,12 @@ function init(){
 
 
     var directionalLight = new THREE.DirectionalLight( 0xffffff, 1 );
-    directionalLight.position.set( 10, 10, 0 );
+    directionalLight.position.set( 25, 25, 0 );
     directionalLight.castShadow=true;
     scene.add( directionalLight );
 
-    directionalLight.shadow.mapSize.width = 2048;
-    directionalLight.shadow.mapSize.height = 2048;
+    directionalLight.shadow.mapSize.width = 4096;
+    directionalLight.shadow.mapSize.height = 4096;
     var d = 100;
     directionalLight.shadow.camera.left = -d;
     directionalLight.shadow.camera.right = d;
@@ -71,6 +71,14 @@ function init(){
     animate();
 
 
+    // For Windows resizing.
+    THREEx.WindowResize(renderer,camera);
+
+
+    // For full Screen
+    THREEx.FullScreen.bindKey({ charCode : 'm'.charCodeAt(0) });
+
+
     jQuery.get('ais/luisAi.js', function(data) {
         $("body").append('<div id="blueTankScreen" class="container"><div class="screen monitor"><div class="content"><div class="codeEditor" id="editorBlue">// Blue tank brain.\n' + data + '</div> </div> <div class="base"> <div class="grey-shadow"></div> <div class="foot top"></div> <div class="foot bottom"></div> <div class="shadow"></div> </div> </div> </div>')
 
@@ -90,11 +98,8 @@ function init(){
 
     })
 
+
 }
-
-
-
-
 
 
 function animate(){
@@ -152,8 +157,6 @@ function render(){
 
 
 }
-
-
 
 
 function generateRandomName()
@@ -371,8 +374,7 @@ function loadtank(tankPathModel,stepFunc,creationFunc){
             }
             */
 
-            console.log(rotation)
-
+            //console.log(rotation)
 
             var stepTarget = Math.abs(Math.floor(rotation * 20 /(2*Math.PI)));
             if (stepTarget ==0)stepTarget =1;
@@ -421,6 +423,9 @@ function loadtank(tankPathModel,stepFunc,creationFunc){
                     var x = pos.x
                     var z = pos.z
                     for(var i=0; i< tanks.length;i++){
+
+                        // TODO If tanks with same name --> Error.
+                        // change bullet.shootBy=thisS &&  if( tanks[i] === this){
                         if( tanks[i].tankName != this.shootBy){
 
                             var dx= x -  tanks[i].position.x
@@ -473,12 +478,12 @@ function loadtank(tankPathModel,stepFunc,creationFunc){
                 this.canShoot=false;
                 var bullet = createBullet(this.position)
                 bullet.step(bullet);
-                thisS.behaviorQueueSemaphore=true
+                thisS.behaviorQueueSemaphore=true;
                 setTimeout(function(){
                     thisS.canShoot=true;
                 },500)
             }else{
-                thisS.behaviorQueueSemaphore=true
+                thisS.behaviorQueueSemaphore=true;
                 throw "cantShootError"
 
             }
@@ -541,6 +546,8 @@ function trueWithChanceOf(x,y){
 // Triggered when a tanks has been shot.
 document.addEventListener('tankHit',function(evt){
 
+    console.log("HIT")
+    console.log(evt.detail.tank.tankName);
     var tank = evt.detail.tank
     tank.life -=1
     if(tank.life >=0){
@@ -563,13 +570,13 @@ document.addEventListener('tankHit',function(evt){
 })
 
 
+loadtank('models/tankBlue.json',stepLuis,creationLuis);
+loadtank('models/tankRed.json',stepLuis,creationLuis);
 
-//loadtank('models/tankBlue.json',stepLuis,creationLuis);
 //loadtank('models/tankRed.json',stepBot,creationBot);
 
-loadtank('models/tankRed.json',stepNada,creationNada);
-loadtank('models/tankRed.json',stepNada,creationNada);
-
+//loadtank('models/tankRed.json',stepNada,creationNada);
+//loadtank('models/tankRed.json',stepNada,creationNada);
 
 
 function reStart(){
@@ -588,6 +595,7 @@ function reStart(){
 
     $('.tankLife').remove()
     loadtank('models/tankBlue.json',stepLuis,creationLuis);
-    //loadtank('models/tankRed.json',stepBot,creationBot);
+    loadtank('models/tankRed.json',stepBot,creationBot);
 
 }
+

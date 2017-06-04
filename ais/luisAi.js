@@ -6,7 +6,7 @@
 
 function creationLuis(){
     //Name of the tank.
-    this.tankName="Lui's Tank"
+    //this.tankName="Lui's Tank"
 
     // The Ai state. (search|run|attack)
     this.state="search"
